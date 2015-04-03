@@ -1,9 +1,10 @@
 jQuery(document).ready(function() {
 
-      var  fuenla =  function() {
+
+       var  fuenla =  function(valor) {
                 var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
                 $.getJSON( flickerAPI, {
-                    tags: "fuenlabrada",
+                    tags: valor,
                     tagmode: "any",
                     format: "json"
                 })
@@ -16,12 +17,17 @@ jQuery(document).ready(function() {
 
                 });
             });
-          }
-        fuenla();
-        
-        $("#images").hide();
-        $("button").click(function(){
-            $("#images").show();
+            
+        }
+
+      $("button").click(function(){
+
+         var valor = $("input:text[value]").val();       
+         $("#images").html(" ");      
+         fuenla(valor);
+
         });
+        
+        
 
 });
